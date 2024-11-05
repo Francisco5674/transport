@@ -2,6 +2,8 @@
 library(data.table)
 library(geosphere)
 
+setwd("C:/Users/Francisco/Desktop/Research/transport/issue_explorer")
+
 data <- fread("src/ArchivoCompleto.csv")
 
 
@@ -14,6 +16,8 @@ for (colum in colnames(data)){
 print(table(data$name))
 
 firms <- data[,.(vehicles = length(unique(vehicle_id))), by = "name"]
+
+fwrite(firms,"out/firms.csv")
 
 print(firms)
 print(paste("Total =", sum(firms$vehicles)))
