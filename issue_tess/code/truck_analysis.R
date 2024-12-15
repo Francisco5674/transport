@@ -91,7 +91,7 @@ vehicle_by_name <- gps_data %>%
 print(vehicle_by_name)
 
 # Filter for the specific truck with vehicle_id
-truck_data <- gps_data %>% filter(vehicle_id == 38571)
+truck_data <- gps_data %>% filter(vehicle_id == 38575)
 
 # Create a leaflet map to plot the route
 leaflet(truck_data) %>%
@@ -118,6 +118,13 @@ leaflet(truck_data) %>%
     labels = c("Route", "Points", "Stops"),
     title = "Truck Route"
   )
+
+# Preparing coca cola data
+
+cocacola <- c(38909,38913,38908,38915,38576,41895,41889,38575)
+cocacola_gps_data <- gps_data %>% filter(vehicle_id %in% cocacola)
+
+fwrite(cocacola_gps_data,"out/gps_data_cocacola_02082019.csv")
 
 # Preparing la fete data
 

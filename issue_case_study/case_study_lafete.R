@@ -67,17 +67,7 @@ truck_data <- gps_data[vehicle_id == 6279]
 
 # Create the leaflet map with a white background
 leaflet(data = shops_data) %>%
-  addProviderTiles("CartoDB.Positron") %>%  # Use a white background
-  # Add markers for each shop
-  addCircleMarkers(
-    ~longitude, ~latitude,
-    color = "blue",
-    fill = TRUE,
-    fillColor = "blue",
-    radius = 5,
-    label = ~name,
-    labelOptions = labelOptions(noHide = TRUE, direction = 'top')
-  ) %>%
+  addProviderTiles("CartoDB.Positron") %>%
   # Add truck stops only for deliveries
   addCircleMarkers(
     data = truck_data[delivery == 1],
@@ -112,6 +102,16 @@ leaflet(data = shops_data) %>%
     lng = ~longitude, lat = ~latitude,
     color = "orange",  # Color for the truck's route
     weight = 2
+  ) %>%  # Use a white background
+  # Add markers for each shop
+  addCircleMarkers(
+    ~longitude, ~latitude,
+    color = "blue",
+    fill = TRUE,
+    fillColor = "blue",
+    radius = 5,
+    label = ~name,
+    labelOptions = labelOptions(noHide = TRUE, direction = 'top')
   ) %>%
   # Set initial map view
   setView(lng = mean(shops_data$longitude), lat = mean(shops_data$latitude), zoom = 12)

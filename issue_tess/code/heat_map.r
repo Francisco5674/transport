@@ -53,7 +53,7 @@ leaflet(hex_polygons) %>%
     weight = 0.5,
     opacity = 1,
     color = 'white',
-    fillOpacity = 0.7,
+    fillOpacity = 0.2,
     smoothFactor = 0.2
   ) %>%
   addLegend(
